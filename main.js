@@ -33,33 +33,17 @@ function createTimeBlock(index) {
     timeBlockEl.append(textAreaEl);
     timeBlockEl.append(saveBtnEl);
 
-
     return timeBlockEl;
 }
-
-function addTime() {
-
-}
-
 
 // Appending & Logic
 for (i = 0; i < 24; i++) {
     var finishedTimeBlock = createTimeBlock(i)
-
     var hour = finishedTimeBlock.data('hour');
     var message = localStorage.getItem(hour);
+
     finishedTimeBlock.find('.description').text(message);
     finishedTimeBlock.addClass(hour > curr ? 'future' : hour < curr ? 'past' : 'present')
-
-    // if (hour > 12) {
-    //     var stringHour = JSON.stringify(hour)
-    //     console.log(stringHour)
-    //     stringHour + " PM"
-    // } else {
-    //     var stringHour = JSON.stringify(hour)
-    //     stringHour + " AM"
-    // }
-
     finishedTimeBlock.find('.hour').text(hour)
 
     finishedTimeBlock.on('click', '.saveBtn', function () {
@@ -69,13 +53,3 @@ for (i = 0; i < 24; i++) {
 
     containerEl.append(finishedTimeBlock);
 }
-
-
-// console.log($(this).data('hour'))
-//
-// console.log(containerEl[0].children);
-// console.log('==============');
-// console.log($('.time-block'));
-// console.log('==============');
-// console.log($('.time-block')[0].children);
-//
